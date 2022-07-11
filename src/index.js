@@ -21,7 +21,22 @@ function addToArray(){
         popUp.classList.add('popUpShow');
         
     }
+    else{
+        taskArray.push({
+            project: projName.value,
+            task: taskName.value,
+            descrption: descrp.value,
+            date: dueDate.value,
+            priority: priority.value,
+        
+        })
+        addCell();
+        
+        console.log(taskArray);
     
+        return taskArray
+
+    }
 }
 
 
