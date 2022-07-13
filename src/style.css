@@ -13,8 +13,9 @@ label {
     margin-bottom: 10px;
 }
 
-table, th, tr{
+table, th, tr, td{
     border: 1px solid black;
+    min-width: 100px;
 }
 
 .popUpHidden{
@@ -28,4 +29,20 @@ table, th, tr{
     left: 50%;
     top:25%;
     visibility:visible;
+}
+
+#removeButton{
+    display: block;
+}
+
+.strikeThrough{
+    text-decoration: line-through;
+}
+
+.showDiv{
+    visibility: visible;
+}
+
+.hideDiv{
+    visibility:hidden;
 }
