@@ -61,6 +61,7 @@ function addCell(){
     removeButton.classList.add('removeButton');
     describeButton.classList.add('describeButton');
     
+    
 
      
     for (let i=0; i< taskArray.length; i++){
@@ -72,43 +73,33 @@ function addCell(){
         createRow.appendChild(dueDateCell);
         createRow.appendChild(priorityCell);
         doneButtonCell.appendChild(doneButton);
+        doneButton.setAttribute('id', `doneButton${i}`)
         removeButtonCell.appendChild(removeButton);
-        describeButtonCell.appendChild(describeButton)
+        removeButton.setAttribute('id', `removeButton${i}`)
+        describeButtonCell.appendChild(describeButton);
+        describeButton.setAttribute('id', `describeButton${i}`)
         createRow.appendChild(doneButtonCell);
         createRow.appendChild(removeButtonCell);
         createRow.appendChild(describeButtonCell);
         table.appendChild(createRow);
 
         //below logic for done and delet button
-        let doneButtonArray= document.querySelectorAll('.doneButton');
-        doneButtonArray.forEach(element => {
-            element.addEventListener ('click', doneFunction)
-            });
+        let doneButtonSelect= document.querySelector(`#doneButton${i}`);
+        doneButtonSelect.addEventListener ('click', doneFunction);
         
-        let removeButtonArray= document.querySelectorAll('.removeButton');
-        removeButtonArray.forEach(element => {
-            element.addEventListener ('click', removeFunction)
-            });
+        let removeButtonSelect= document.querySelector(`#removeButton${i}`);
+        removeButtonSelect.addEventListener ('click', function(){
+            let taskItem= this.parentNode.parentNode;
+            taskItem.remove();
+            taskArray.splice(i, 1);
+            
+        });
 
         //below logic for describe button
-        let describeButtonArray= document.querySelectorAll('.describeButton');
-        describeButtonArray.forEach(element => {
-            element.addEventListener ('click', function(){
-                let descriptionDiv= document.createElement('div');
-                let descriptionOk= document.createElement('button');
-                let descrpHiddenDiv= document.querySelector('.descrpHidden');
-                console.log(taskArray[i].descrption);
-                descriptionDiv.textContent = taskArray[i].descrption;
-                descrpHiddenDiv.classList.add('showDiv');
-                descriptionOk.textContent="Ok";
-                descrpHiddenDiv.appendChild(descriptionDiv);
-                descrpHiddenDiv.appendChild(descriptionOk);
-                descriptionOk.addEventListener('click', function(){
-                    descrpHiddenDiv.classList.remove('showDiv');
-                    descrpHiddenDiv.classList.add('hideDiv');
-                })
-             })
-            });
+        let describeButtonSelect= document.querySelector(`#describeButton${i}`);
+        
+        describeButtonSelect.addEventListener ('click', describeFunction)
+            
         };     
 };
     
@@ -147,9 +138,24 @@ function doneFunction(){
     taskItem.classList.add('strikeThrough');
 }
 
-function removeFunction(){
-    
-    let taskItem= this.parentNode.parentNode;
-    taskItem.remove();
-}
 
+function describeFunction(){
+    let descriptionDiv= document.createElement('div');
+    let descriptionOk= document.createElement('button');
+    let descrpHiddenDiv= document.querySelector('.descrpHidden');
+    let stringId = this.id
+    let index= stringId.slice(-1)
+    descriptionDiv.textContent = taskArray[index].descrption;
+    descriptionOk.textContent="Ok";
+    
+    descrpHiddenDiv.appendChild(descriptionDiv);
+    descrpHiddenDiv.appendChild(descriptionOk);
+    descrpHiddenDiv.classList.add('showDiv');
+    
+
+    descriptionOk.addEventListener('click', function(){
+        descriptionDiv.remove();
+        descriptionOk.remove();
+    })
+    
+}
