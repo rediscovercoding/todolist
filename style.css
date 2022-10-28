@@ -1,0 +1,84 @@
+html {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(109, 106, 112),
+    rgb(63, 60, 65)
+  );
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.headerDisplay {
+  font-family: "Raleway", sans-serif;
+  color: aliceblue;
+  grid-column: 1/3;
+  background-color: rgba(12, 0, 116, 0.37);
+  padding-left: 5%;
+  border-radius: 0.5rem 2rem 0.5rem 2rem;
+  padding: 1rem;
+}
+
+.taskInputContainer {
+  border-radius: 1rem;
+  background-color: rgba(126, 139, 214, 0.548);
+  justify-self: left;
+  padding: 2rem 3rem 3rem 3rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+.taskDisplayContainer {
+  font-family: "Roboto", sans-serif;
+  border-radius: 1rem;
+  margin: 1rem 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-self: left;
+}
+
+.inputClass {
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.taskContainer {
+  border-radius: 1rem;
+  background-color: white;
+  min-width: 8rem;
+  min-height: 2rem;
+  margin: auto;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+  display: flex;
+  margin: 1rem;
+}
+
+.taskInfo {
+  margin: 1rem;
+}
+
+.removeBtn,
+.doneBtn {
+  align-self: center;
+  font-size: 1.15rem;
+  margin: 0 1rem 0 0;
+}
+
+.taskDesc {
+  background-color: aliceblue;
+  border-radius: 1rem;
+  border: 3px solid rebeccapurple;
+  padding: 0.5rem;
+  margin-left: 10%;
+  max-width: fit-content;
+}
+
+.strikeThrough {
+  text-decoration: line-through;
+}
