@@ -82,3 +82,29 @@ body {
 .strikeThrough {
   text-decoration: line-through;
 }
+
+@media (max-width: 700px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  .taskContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0.2rem 0.2rem 0 0rem;
+  }
+  .taskInputContainer {
+    margin-left: 0;
+    font-size: 20px;
+  }
+  input[type="text"],
+  input[type="date"],
+  textarea,
+  select {
+    font-size: 20px;
+  }
+
+  .taskDisplayContainer {
+    margin: 1rem 0 0 1rem;
+  }
+}

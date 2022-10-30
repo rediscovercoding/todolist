@@ -53,8 +53,13 @@ let trialOb3 = new tasksConstructor(
   "General",
   2
 );
-
 let taskArr = [trialOb1, trialOb2, trialOb3];
+if (!localStorage.getItem("storedArr")) {
+  taskArr = [trialOb1, trialOb2, trialOb3];
+} else {
+  taskArr = JSON.parse(localStorage.getItem("storedArr"));
+}
+
 refreshview();
 
 function addNewTask() {
@@ -75,6 +80,7 @@ function addNewTask() {
     `${taskPriorityValue}`
   );
   taskArr.push(trialTaskObject);
+  updateStorage(taskArr);
 }
 
 //Update UI
@@ -185,6 +191,7 @@ function remove(n) {
   taskDiv.remove();
   taskArr.splice(n, 1);
   console.log(taskArr);
+  updateStorage(taskArr);
   refreshview(taskArr);
 }
 
@@ -233,3 +240,7 @@ sortBtn.addEventListener("click", function () {
     sortByCategory();
   }
 });
+
+function updateStorage(taskArr) {
+  localStorage.setItem("storedArr", JSON.stringify(taskArr));
+}
